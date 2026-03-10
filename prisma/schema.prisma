@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/**
+ * Boilerplate Placeholder Model.
+ * Prisma requires at least one model to generate the type-safe client.
+ * Replace this with your actual business models.
+ */
+model BoilerplatePlaceholder {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  deletedAt DateTime? // SOFT DELETE support enabled
+
+  @@map("boilerplate_placeholders")
+}

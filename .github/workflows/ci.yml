@@ -1,0 +1,57 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  quality-assurance:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Security Scan (npm audit)
+        run: npm audit --audit-level=high
+
+      - name: Lint check
+        run: npm run lint
+
+      - name: Production Build
+        run: npm run build
+
+      - name: Unit Tests & Coverage (>85%)
+        run: npm run test:unit -- --coverage
+
+      - name: Integrated Tests & Coverage (>80%)
+        run: npm run test:integrated -- --coverage
+
+      - name: Snyk Security Scan (Optional)
+        if: env.SNYK_TOKEN != ''
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  # Model for Deployment step (can be customized)
+  deploy:
+    needs: quality-assurance
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Production
+        run: echo "Standard deployment flow would go here (e.g., AWS ECS, Lambda, Vercel)"
