@@ -4,15 +4,15 @@
         "json",
         "ts"
     ],
-    "rootDir": "test",
-    "testRegex": ".*\\.int-spec\\.ts$",
+    "rootDir": ".",
+    "testRegex": "test/.*\\.int-spec\\.ts$",
     "transform": {
         "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-        "**/*.(t|j)s"
+        "src/**/*.(t|j)s"
     ],
-    "coverageDirectory": "../coverage/integrated",
+    "coverageDirectory": "coverage/integrated",
     "testEnvironment": "node",
     "coverageThreshold": {
         "global": {
