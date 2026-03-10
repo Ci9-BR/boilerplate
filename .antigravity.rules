@@ -35,4 +35,5 @@
 - MANDATORY HEALTH ENDPOINTS: Every service MUST implement `/health` and `/ready` endpoints to provide native observability for container orchestrators and monitoring systems.
 - ZERO WARNING POLICY: Code MUST be 100% free of warnings and errors in console, logs, and linting. Warnings are treated as blocking errors.
 - HARDCODED SECRET DETECTION: The linter MUST be configured to detect and block high-entropy strings and known AWS/API key patterns to prevent credential leakage.
+- NO INSECURE TRANSITIVE: The use of `npm overrides` is MANDATORY whenever a transitive dependency fails an `npm audit` in CI. Each override MUST have a corresponding English comment in `package.json` referencing the CVE or justification.
 - ALWAYS at the end of each execution, write what can be improved in existing or missing rules, skills, and/or workflows based on the last prompt execution.
