@@ -22,7 +22,9 @@
     "test:integrated": "jest --config jest-int.json --passWithNoTests",
     "test:e2e": "playwright test",
     "prepare": "husky",
-    "release": "semantic-release"
+    "release": "semantic-release",
+    "bp:init": "bash storage/scripts/boilerplate-manager.sh init",
+    "bp:update": "bash storage/scripts/boilerplate-manager.sh update"
   },
   "keywords": [],
   "devDependencies": {
