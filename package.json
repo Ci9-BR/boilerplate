@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Professional NestJS backend boilerplate",
   "license": "ISC",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "author": "",
   "type": "commonjs",
   "main": "dist/main.js",
