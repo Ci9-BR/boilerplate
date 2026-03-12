@@ -7,12 +7,12 @@ import { Request, Response, NextFunction } from 'express';
  */
 @Injectable()
 export class MultiTenancyMiddleware implements NestMiddleware {
-    use(req: Request, res: Response, next: NextFunction) {
-        /* eslint-disable i18next/no-literal-string */
-        const tenantId = req.headers['x-tenant-id'] || 'default';
-        /* eslint-enable i18next/no-literal-string */
-        const extendedReq = req as Request & { tenantId: string | string[] };
-        extendedReq.tenantId = tenantId;
-        next();
-    }
+  use(req: Request, res: Response, next: NextFunction) {
+    /* eslint-disable i18next/no-literal-string */
+    const tenantId = req.headers['x-tenant-id'] || 'default';
+    /* eslint-enable i18next/no-literal-string */
+    const extendedReq = req as Request & { tenantId: string | string[] };
+    extendedReq.tenantId = tenantId;
+    next();
+  }
 }

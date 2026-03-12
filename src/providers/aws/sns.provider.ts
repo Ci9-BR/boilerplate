@@ -9,33 +9,33 @@ import { BaseProvider } from '../base.provider';
  */
 @Injectable()
 export class SNSProvider extends BaseProvider {
-    private client: SNSClient;
+  private client: SNSClient;
 
-    constructor(private configService: ConfigService) {
-        super(SNSProvider.name);
-        this.client = new SNSClient({
-            region: this.configService.get<string>('AWS_REGION'),
-            endpoint: this.configService.get<string>('AWS_ENDPOINT'),
-            credentials: {
-                accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID') || 'dummy',
-                secretAccessKey: this.configService.get<string>('AWS_SECRET_ACCESS_KEY') || 'dummy',
-            },
-        });
-    }
+  constructor(private configService: ConfigService) {
+    super(SNSProvider.name);
+    this.client = new SNSClient({
+      region: this.configService.get<string>('AWS_REGION'),
+      endpoint: this.configService.get<string>('AWS_ENDPOINT'),
+      credentials: {
+        accessKeyId: this.configService.get<string>('AWS_ACCESS_KEY_ID') || 'dummy',
+        secretAccessKey: this.configService.get<string>('AWS_SECRET_ACCESS_KEY') || 'dummy',
+      },
+    });
+  }
 
-    /**
-     * Publish a notification message to a specific SNS topic.
-     */
-    async publish(topicArn: string, message: Record<string, unknown>) {
-        this.logOperation('publish', { topicArn });
-        try {
-            const command = new PublishCommand({
-                TopicArn: topicArn,
-                Message: JSON.stringify(message),
-            });
-            return await this.client.send(command);
-        } catch (error) {
-            this.handleError('publish', error);
-        }
+  /**
+   * Publish a notification message to a specific SNS topic.
+   */
+  async publish(topicArn: string, message: Record<string, unknown>) {
+    this.logOperation('publish', { topicArn });
+    try {
+      const command = new PublishCommand({
+        TopicArn: topicArn,
+        Message: JSON.stringify(message),
+      });
+      return await this.client.send(command);
+    } catch (error) {
+      this.handleError('publish', error);
     }
+  }
 }

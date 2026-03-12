@@ -5,6 +5,6 @@ import { HealthController } from './health.controller';
  * Health Module for application monitoring.
  */
 @Module({
-    controllers: [HealthController],
+  controllers: [HealthController],
 })
-export class HealthModule { }
+export class HealthModule {}

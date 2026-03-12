@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: Marin@9988
       POSTGRES_DB: boilerplate
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -18,14 +18,14 @@ services:
     image: localstack/localstack
     container_name: boilerplate-aws
     ports:
-      - "4566:4566"
+      - '4566:4566'
     environment:
       - SERVICES=s3,sqs,sns,dynamodb
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
     volumes:
-      - "./infra/localstack:/var/lib/localstack"
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - './infra/localstack:/var/lib/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
 
 volumes:
   postgres_data:

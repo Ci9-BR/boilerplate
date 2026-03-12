@@ -1,25 +1,19 @@
 {
-    "moduleFileExtensions": [
-        "js",
-        "json",
-        "ts"
-    ],
-    "rootDir": ".",
-    "testRegex": "test/.*\\.int-spec\\.ts$",
-    "transform": {
-        "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "collectCoverageFrom": [
-        "src/**/*.(t|j)s"
-    ],
-    "coverageDirectory": "coverage/integrated",
-    "testEnvironment": "node",
-    "coverageThreshold": {
-        "global": {
-            "branches": 80,
-            "functions": 80,
-            "lines": 80,
-            "statements": 80
-        }
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testRegex": "test/.*\\.int-spec\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "collectCoverageFrom": ["src/**/*.(t|j)s"],
+  "coverageDirectory": "coverage/integrated",
+  "testEnvironment": "node",
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "functions": 80,
+      "lines": 80,
+      "statements": 80
     }
+  }
 }

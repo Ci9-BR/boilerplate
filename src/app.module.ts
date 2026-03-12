@@ -12,33 +12,33 @@ import { HealthModule } from './modules/health/health.module';
 import { AppController } from './app.controller';
 
 @Module({
-    imports: [
-        ConfigModule.forRoot({
-            isGlobal: true,
-        }),
-        PrismaModule,
-        HealthModule,
-    ],
-    controllers: [AppController],
-    providers: [
-        S3Provider,
-        SQSProvider,
-        SNSProvider,
-        DynamoDBProvider,
-        OpenAIProvider,
-        SecretsManagerProvider,
-    ],
-    exports: [
-        S3Provider,
-        SQSProvider,
-        SNSProvider,
-        DynamoDBProvider,
-        OpenAIProvider,
-        SecretsManagerProvider,
-    ],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    PrismaModule,
+    HealthModule,
+  ],
+  controllers: [AppController],
+  providers: [
+    S3Provider,
+    SQSProvider,
+    SNSProvider,
+    DynamoDBProvider,
+    OpenAIProvider,
+    SecretsManagerProvider,
+  ],
+  exports: [
+    S3Provider,
+    SQSProvider,
+    SNSProvider,
+    DynamoDBProvider,
+    OpenAIProvider,
+    SecretsManagerProvider,
+  ],
 })
 export class AppModule implements NestModule {
-    configure(consumer: MiddlewareConsumer) {
-        consumer.apply(MultiTenancyMiddleware).forRoutes('*');
-    }
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(MultiTenancyMiddleware).forRoutes('*');
+  }
 }

@@ -1,5 +1,5 @@
 {
-    "WELCOME": "Welcome to Boilerplate",
-    "ERROR_INTERNAL": "Internal server error",
-    "AUTH_FAILED": "Authentication failed"
+  "WELCOME": "Welcome to Boilerplate",
+  "ERROR_INTERNAL": "Internal server error",
+  "AUTH_FAILED": "Authentication failed"
 }

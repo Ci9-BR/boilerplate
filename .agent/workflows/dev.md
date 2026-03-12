@@ -31,8 +31,8 @@ description: Ultra-rigorous iterative dev workflow with story planning, infinite
     - **E. App Startup**: // turbo  
       Run `npm run start` and monitor for "Nest application successfully started".
     - **F. Deep Log Audit**: // turbo  
-      Use `log-navigator` on `storage/log/`. 
-      **Requirement**: ZERO Warnings and ZERO Errors. 
+      Use `log-navigator` on `storage/log/`.
+      **Requirement**: ZERO Warnings and ZERO Errors.
       (Specifically audit for `PrismaClientInitializationError` P1001).
 
 7.  **Performance Snapshot**:
@@ -40,8 +40,8 @@ description: Ultra-rigorous iterative dev workflow with story planning, infinite
 
 8.  **Infinite Loop Logic**:
     - **IF** any step (3-7) fails:
-        - **INTERRUPT**. Fix root cause.
-        - **RESTART** from Step 4 (Self-Correction).
+      - **INTERRUPT**. Fix root cause.
+      - **RESTART** from Step 4 (Self-Correction).
     - **ELSE**: Proceed to next Task.
 
 9.  **Completion**:
